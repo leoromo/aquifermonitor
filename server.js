@@ -41,6 +41,15 @@ router.route('/records')
 	});
 });
 
+router.route('/records/user/:user')
+.get(function(req, res) {
+	WaterRecord.find({user:req.params.user}, function(err, records) {
+		if (err)
+			res.send(err);
+		res.json(records);
+	})
+})
+
 router.route('/records/:id')
 .get(function(req, res) {
 	WaterRecord.findById(req.params.id, function (err, record) {
