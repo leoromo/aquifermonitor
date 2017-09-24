@@ -7,8 +7,10 @@ class Record extends Component {
 		var date = new Date(this.props.date * 1000);
 		return (
 			<div>
-			<h3>{'Measurement'}</h3>
-			{this.props.name} {date.toString()} {this.props.data}
+			<h3> {this.props.name} </h3>
+			<p> Location: {this.props.lat}, {this.props.lon} </p>
+			<p> Date: {date.toString()} </p>
+			<p> Water Level: {this.props.data} </p>
 			</div>
 		)
 	}

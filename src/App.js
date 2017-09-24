@@ -9,17 +9,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // data: [{
-      //   name: 'TEST',
-      //   location: {
-      //     lat: 20,
-      //     lon: -120
-      //   },
-      //   user: 'DefaultUser',
-      //   date: 12341234,
-      //   data: '120',
-      //   _id: '0'
-      // }]
       data: []
     };
     this.loadRecordsFromServer = this.loadRecordsFromServer.bind(this);
@@ -45,10 +34,7 @@ class App extends Component {
           <h2>WaterWatch</h2>
           <h3>Monitoreo de Acuiferos</h3>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div>
+        <div className="App-records">
         <RecordList data={this.state.data}/>
         </div>
       </div>

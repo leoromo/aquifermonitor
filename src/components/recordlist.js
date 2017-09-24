@@ -11,7 +11,9 @@ class RecordList extends Component {
 				key={record._id}
 				date={record.date} 
 				name={record.name} 
-				data={record.data}>
+				data={record.data}
+				lat={record.location.lat}
+				lon={record.location.lon}>
 				</Record> 
 				)
 			})
