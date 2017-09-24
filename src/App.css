@@ -44,8 +44,19 @@
   border-radius: 15px;
 }
 
+.App-aquifer-active {
+  background-color: #ff9933;
+  color: white;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
 .App-aquifer:hover {
   background-color: #2851a4;
+}
+
+.App-aquifer:active {
+  background-color: #ff9933;
 }
 
 .App-mainTable {

@@ -7,6 +7,7 @@ class AquiferList extends Component {
 	render() {
 		var names = [];
 		var changeCallBack = this.props.changeAquifer.bind(this);
+		var activeAquifer = this.props.activeAquifer;
 		for (var property in this.props.data) {
 			if (this.props.data.hasOwnProperty(property)) {
 				var aquifer = {
@@ -23,6 +24,7 @@ class AquiferList extends Component {
 					key={aquifer.key}
 					name={aquifer.name}
 					user={aquifer.user}
+					active={activeAquifer === aquifer.name}
 					aquiferChange={changeCallBack}> </Aquifer>
 			)
 		})

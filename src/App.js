@@ -37,6 +37,11 @@ class App extends Component {
           return groups;
         }, {});
         this.setState({dataByName: grouped});
+      })
+      .then(() => {
+        if (typeof this.state.dataByName[this.state.activeAquifer] !== 'undefined') {
+          this.setState({recordData: this.state.dataByName[this.state.activeAquifer]});
+        }
       });
   }
 
@@ -50,7 +55,8 @@ class App extends Component {
   }
 
   changeAquifer(value) {
-    this.setState({recordData: this.state.dataByName[value]});
+    this.setState({recordData: this.state.dataByName[value],
+                    activeAquifer: value});
   }
 
   render() {
@@ -68,6 +74,7 @@ class App extends Component {
           <div className='App-mainTableRow'>
             <div className='App-aquifers'>
             <AquiferList 
+              activeAquifer={this.state.activeAquifer}
               data={this.state.dataByName} 
               changeAquifer={this.changeAquifer}/>
             </div>

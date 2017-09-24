@@ -15,12 +15,23 @@ class Aquifer extends Component {
 	}
 
 	render() {
-		return (
-			<div className='App-aquifer' onClick={this.clickAlert}>
-			<h3> {this.props.name} </h3>
-			<p> User: {this.props.user} </p>
-			</div>
-		)
+		if (this.props.active) {
+			return (
+				<div className='App-aquifer-active' onClick={this.clickAlert}>
+				<h3> {this.props.name} </h3>
+				<p> User: {this.props.user} </p>
+				</div>
+			)
+		}
+		else {
+			return (
+				<div className='App-aquifer' onClick={this.clickAlert}>
+				<h3> {this.props.name} </h3>
+				<p> User: {this.props.user} </p>
+				</div>
+			)
+		}
+
 	}
 }
 
