@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var WaterRecord = mongoose.model('WaterRecord');
 
 exports.findAll = function(req, res) {
+	console.log('find all records');
 	WaterRecord.find(function(err, records) {
 		if (err)
 			res.send(err);
