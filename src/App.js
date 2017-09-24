@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import AquiferList from './components/aquiferlist';
 import RecordList from './components/recordlist';
 import UserForm from './components/userform';
 import axios from 'axios';
@@ -10,10 +11,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      rawData: [],
+      dataByName: [],
+      recordData: []
     };
     this.loadRecordsFromServer = this.loadRecordsFromServer.bind(this);
     this.changeUser = this.changeUser.bind(this);
+    this.changeAquifer = this.changeAquifer.bind(this);
   }
 
   loadRecordsFromServer() {
@@ -23,7 +27,16 @@ class App extends Component {
     }
     axios.get(url)
       .then(res => {
-        this.setState({data: res.data});
+        this.setState({rawData: res.data});
+      })
+      .then(() => {
+        var grouped = this.state.rawData.reduce((groups, item) => {
+          var val = item.name;
+          groups[val] = groups[val] || [];
+          groups[val].push(item);
+          return groups;
+        }, {});
+        this.setState({dataByName: grouped});
       });
   }
 
@@ -33,7 +46,11 @@ class App extends Component {
   }
 
   changeUser(value) {
-      this.setState({user: value});
+    this.setState({user: value, dataByName: [], recordData: []});
+  }
+
+  changeAquifer(value) {
+    this.setState({recordData: this.state.dataByName[value]});
   }
 
   render() {
@@ -47,8 +64,17 @@ class App extends Component {
         <div>
         <UserForm changeUser={this.changeUser} />
         </div>
-        <div className="App-records">
-        <RecordList data={this.state.data}/>
+        <div className='App-mainTable'>
+          <div className='App-mainTableRow'>
+            <div className='App-aquifers'>
+            <AquiferList 
+              data={this.state.dataByName} 
+              changeAquifer={this.changeAquifer}/>
+            </div>
+            <div className="App-records">
+            <RecordList data={this.state.recordData}/>
+            </div>
+          </div>
         </div>
       </div>
     );
