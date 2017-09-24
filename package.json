@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "foreman": "^2.0.0",
