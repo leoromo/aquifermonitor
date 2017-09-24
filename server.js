@@ -49,7 +49,8 @@ router.route('/records/:id')
 
 app.use('/api', router);
 
-mongoose.connect('mongodb://localhost:27017/mydb', {useMongoClient:true}, function(err, res) {
+var db = require('./config/config');
+mongoose.connect(db.url, {useMongoClient:true}, function(err, res) {
 	if (err)
 		console.log(err);
 	app.listen(port, function() {
