@@ -13,7 +13,8 @@ class RecordList extends Component {
 				name={record.name} 
 				data={record.data}
 				lat={record.location.lat}
-				lon={record.location.lon}>
+				lon={record.location.lon}
+				user={record.user}>
 				</Record> 
 				)
 			})

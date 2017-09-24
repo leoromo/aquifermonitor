@@ -11,6 +11,7 @@ class Record extends Component {
 			<p> Location: {this.props.lat}, {this.props.lon} </p>
 			<p> Date: {date.toString()} </p>
 			<p> Water Level: {this.props.data} </p>
+			<p> User: {this.props.user} </p>
 			</div>
 		)
 	}
