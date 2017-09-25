@@ -4,6 +4,7 @@ import './App.css';
 import AquiferList from './components/aquiferlist';
 import RecordList from './components/recordlist';
 import UserForm from './components/userform';
+import AquiferGraph from './components/aquifergraph';
 import axios from 'axios';
 
 class App extends Component {
@@ -82,6 +83,10 @@ class App extends Component {
             <RecordList data={this.state.recordData}/>
             </div>
           </div>
+        </div>
+        <div className='App-records-chart'>
+          <AquiferGraph 
+            data={this.state.recordData} />
         </div>
       </div>
     );

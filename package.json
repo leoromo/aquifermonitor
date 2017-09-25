@@ -12,7 +12,9 @@
     "nodemon": "^1.12.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.13"
+    "react-scripts": "1.0.13",
+    "react-vis": "^1.7.7",
+    "recharts": "^1.0.0-apha.5"
   },
   "scripts": {
     "start": "react-scripts start",
