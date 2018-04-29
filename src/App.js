@@ -65,7 +65,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>WaterWatch</h2>
+          <h2>Piezolect</h2>
           <h3>Monitoreo de Acuiferos</h3>
         </div>
         <div>
