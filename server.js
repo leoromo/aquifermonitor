@@ -30,7 +30,8 @@ app.use(function(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-	res.json({message: 'WaterWatch API Initialized'});
+	// res.json({message: 'WaterWatch API Initialized'});
+	res.send('CONNECT');
 });
 
 router.route('/records')
@@ -47,7 +48,7 @@ router.route('/records/:id')
 .get(RecordsRouter.findRecordById)
 .delete(RecordsRouter.deleteRecord);
 
-app.use('/api', router);
+app.use('/', router);
 
 var db = require('./config/config');
 mongoose.connect(db.url, {useMongoClient:true}, function(err, res) {
