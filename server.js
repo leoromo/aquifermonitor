@@ -4,8 +4,12 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var WaterRecord = require('./models/waterrecord');
-var RecordsRouter = require('./routes/waterrecords');
+
+var PiezolectDevice = require('./models/devicemodel');
+var DeviceRouter = require('./routes/deviceroutes');
+
+var PiezolectMeasurement = require('./models/measurementmodel');
+var MeasurementRouter = require('./routes/measurementroutes')
 mongoose.Promise = require('bluebird');
 
 var app = express();
@@ -34,19 +38,41 @@ router.get('/', function(req, res) {
 	res.send('CONNECT');
 });
 
-router.route('/records')
-.get(RecordsRouter.findAll)
-.post(RecordsRouter.addRecord);
 
-router.route('/records/name/:name')
-.get(RecordsRouter.findRecordsByName);
+// Add old records
+// router.route('/records')
+// .get(RecordsRouter.findAll)
+// .post(RecordsRouter.addRecord);
 
-router.route('/records/user/:user')
-.get(RecordsRouter.findRecordsByUser);
+// router.route('/records/name/:name')
+// .get(RecordsRouter.findRecordsByName);
 
-router.route('/records/:id')
-.get(RecordsRouter.findRecordById)
-.delete(RecordsRouter.deleteRecord);
+// router.route('/records/user/:user')
+// .get(RecordsRouter.findRecordsByUser);
+
+// router.route('/records/:id')
+// .get(RecordsRouter.findRecordById)
+// .delete(RecordsRouter.deleteRecord);
+
+// Add measurements
+router.route('/measurements')
+.get(MeasurementRouter.findAll)
+.post(MeasurementRouter.addRecord);
+
+router.route('./measurements/:id')
+.get(MeasurementRouter.findRecordById)
+.delete(MeasurementRouter.deleteRecord);
+
+router.route('./measurements/device_id/:device_id')
+.get(MeasurementRouter.findRecordsByDeviceId);
+
+// Add devices
+router.route('/devices')
+.get(DeviceRouter.findAll)
+.post(DeviceRouter.addRecord);
+
+router.route('/devices/:id')
+.delete(DeviceRouter.deleteRecord);
 
 app.use('/', router);
 
