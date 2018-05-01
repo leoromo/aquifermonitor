@@ -33,7 +33,7 @@ exports.addRecord = function(req, res) {
 }
 
 exports.findRecordsByDeviceId = function(req, res) {
-	DeviceMeasurement.find({device_id:req.params.device_id}, function(err, records) {
+	PiezolectMeasurement.find({device_id:req.params.device_id}, function(err, records) {
 		if (err)
 			res.send(err);
 		res.json(records);

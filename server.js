@@ -34,45 +34,34 @@ app.use(function(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-	// res.json({message: 'WaterWatch API Initialized'});
-	res.send('CONNECT');
+	res.json({message: 'WaterWatch API Initialized'});
 });
-
-
-// Add old records
-// router.route('/records')
-// .get(RecordsRouter.findAll)
-// .post(RecordsRouter.addRecord);
-
-// router.route('/records/name/:name')
-// .get(RecordsRouter.findRecordsByName);
-
-// router.route('/records/user/:user')
-// .get(RecordsRouter.findRecordsByUser);
-
-// router.route('/records/:id')
-// .get(RecordsRouter.findRecordById)
-// .delete(RecordsRouter.deleteRecord);
 
 // Add measurements
 router.route('/measurements')
 .get(MeasurementRouter.findAll)
 .post(MeasurementRouter.addRecord);
 
-router.route('./measurements/:id')
+router.route('/measurements/:id')
 .get(MeasurementRouter.findRecordById)
 .delete(MeasurementRouter.deleteRecord);
 
-router.route('./measurements/device_id/:device_id')
+router.route('/measurements/by_device/:device_id')
 .get(MeasurementRouter.findRecordsByDeviceId);
 
 // Add devices
 router.route('/devices')
 .get(DeviceRouter.findAll)
-.post(DeviceRouter.addRecord);
+.post(DeviceRouter.addDevice);
+
+router.route('/devices/by_user/:user')
+.get(DeviceRouter.findDevicesByUser);
+
+router.route('/devices/by_name/:name')
+.get(DeviceRouter.findDeviceByName);
 
 router.route('/devices/:id')
-.delete(DeviceRouter.deleteRecord);
+.delete(DeviceRouter.deleteDevice);
 
 app.use('/', router);
 
