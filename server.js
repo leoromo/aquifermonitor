@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var PiezolectDevice = require('./models/devicemodel');
 var DeviceRouter = require('./routes/deviceroutes');
+var TestRouter = require('./routes/testroutes');
 
 var PiezolectMeasurement = require('./models/measurementmodel');
 var MeasurementRouter = require('./routes/measurementroutes')
@@ -36,6 +37,10 @@ app.use(function(req, res, next) {
 router.get('/', function(req, res) {
 	res.json({message: 'WaterWatch API Initialized'});
 });
+
+// Testing routes
+router.route('/test')
+.get(TestRouter.test);
 
 // Add measurements
 router.route('/measurements')
